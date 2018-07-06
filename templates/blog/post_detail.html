@@ -24,5 +24,16 @@
     <div class="body">
         {{ object.content|linebreaks }}
     </div>
+
+    <div>
+        <b>TAGS: </b>
+        {# 커스텀 태그를 사용하기위하 tagging_tags 모듈 로딩 #}
+        {% load tagging_tags %}
+        {% tags_for_object object as tags %}
+        {% for tag in tags %}
+            <a href="{% url 'blog:tagged_object_list' tag.name %}">{{ tag.name }}</a>
+        {% endfor %}
+        <a href="{% url 'blog:tag_cloud' %}"><i>[ TagCloud ]</i></a>
+    </div>
 </div>
 {% endblock %}
