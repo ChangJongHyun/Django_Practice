@@ -13,5 +13,4 @@ urlpatterns = [
     path('<int:year>/<month>/', PostMAV.as_view(), name='post_month_archive'),
     path('<int:year>/<month>/<int:day>/', PostDAV.as_view(), name='post_day_archive'),
     path('today/', PostTAV.as_view(), name='post_today_archive'),
-
 ]

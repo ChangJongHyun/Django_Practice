@@ -7,6 +7,7 @@ from bookmark.models import Bookmark
 
 class BookmarkLV(ListView):
     model = Bookmark
+    template_name = 'bookmark/bookmark_list.html'
 
 
 class BookmarkDV(DetailView):

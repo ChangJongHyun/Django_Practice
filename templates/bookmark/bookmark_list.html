@@ -1,17 +1,16 @@
-<html>
-<head>
-    <title>Django Bookmark list</title>
-</head>
+{% extends "base.html" %}
 
-<body>
+{% block title %}Django Bookmark List{% endblock %}
+
+{% block content %}
 <div id="content">
-    <h>Bookmark List</h>
+    <h1>Bookmark List</h1>
 
     <ul>
         {% for bookmark in object_list %}
-            <li><a href="{% url 'detail' bookmark.id %}">{{ bookmark }}</a></li>
+            {# bookmark:detail로 이동하고, bookmark.id를 인자로 넘겨줌 #}
+            <li><a href="{% url 'bookmark:detail' bookmark.id %}">{{ bookmark }}</a></li>
         {% endfor %}
     </ul>
 </div>
-</body>
-</html>
+{% endblock %}
