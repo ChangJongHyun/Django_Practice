@@ -33,14 +33,20 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'bookmark.apps.BookmarkConfig',
     'blog.apps.BlogConfig',
+    'photo.apps.PhotoConfig',
+    'disqus',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites', # SITE_ID를 쓸려면 이거 넣어줘야함~
     'tagging.apps.TaggingConfig',
 ]
+
+DISQUS_WEBSITE_SHORTNAME = 'django-practice-1'
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -125,3 +131,4 @@ STATIC_URL = '/static/'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+

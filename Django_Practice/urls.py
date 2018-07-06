@@ -13,15 +13,19 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf import settings
+from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 
 from .views import HomeView
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+                  path('admin/', admin.site.urls),
 
-    path('', HomeView.as_view(), name='home'),
-    path('blog/', include('blog.urls', namespace='blog')),
-    path('bookmark/', include('bookmark.urls', namespace='bookmark')),
-]
+                  path('', HomeView.as_view(), name='home'),
+                  path('blog/', include('blog.urls', namespace='blog')),
+                  path('bookmark/', include('bookmark.urls', namespace='bookmark')),
+                  path('photo/', include('photo.urls', namespace='photo')),
+              ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+# settings.MEDIA_URL로 정의된 요청이 오면, document_root 인자가 전달되고, 특별한 뷰 함수가 처리함
